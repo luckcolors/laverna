@@ -60,6 +60,15 @@ gulp.task('release', plugins.sequence(
     ['copyDist', 'copyRelease'],
     'npm:install',
     'electron',
+	'mobile',
+    'release:after'
+));
+
+gulp.task('release-mobile', plugins.sequence(
+    'clean:release',
+    ['copyDist', 'copyRelease'],
+    'npm:install',
+	'mobile:build',
     'release:after'
 ));
 
